@@ -17,7 +17,7 @@ public class User {
 
     private boolean enabled;
 
-    @OneToOne(mappedBy="user")
+    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
     private Authorities authorities;
 
     public Long getId() {

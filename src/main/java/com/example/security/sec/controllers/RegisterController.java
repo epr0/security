@@ -38,10 +38,11 @@ public class RegisterController {
         String encodedPassword  = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
-        Authorities boardAuthority = new Authorities();
-        boardAuthority.setAuthority("BOARD");
-        boardAuthority.setUser(user);
-        user.setAuthorities(boardAuthority);
+       // Authorities boardAuthority = new Authorities();
+       // boardAuthority.setAuthority("BOARD");
+       // boardAuthority.setUser(user);
+        Authorities authority = authoritiesRepository.findById(new Long(1)).get();
+        user.setAuthorities(authority);
         userRepository.save(user);
 
         return user;
